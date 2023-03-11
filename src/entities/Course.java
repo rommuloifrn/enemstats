@@ -11,7 +11,7 @@ public class Course {
 	
 	private double year;
 	private double passingScore;
-	private double pasingScorePPP;
+	private double passingScorePPP;
 	
 	public Course() {
 	}
@@ -26,7 +26,7 @@ public class Course {
 
 		this.year = year;
 		this.passingScore = passingScore;
-		this.pasingScorePPP = passingScorePPP;
+		this.passingScorePPP = passingScorePPP;
 	}
 	
 	public Course(String name, double languagesWeight, double mathWeight, double humanitiesWeight, double natureWeight, double essayWeight) {
@@ -36,6 +36,14 @@ public class Course {
 		this.humanitiesWeight = humanitiesWeight;
 		this.natureWeight = natureWeight;
 		this.essayWeight = essayWeight;
+	}
+	
+	public String resultOnIt(Exam exam) {
+		double grade = gradeOnIt(exam);
+		double percentage = grade*100/passingScore;
+		double percentagePPP = grade*100/passingScorePPP;
+		
+		return String.format("Sua nota no curso inserido (%s) é %.2f | %.2f%% da ampla (%.2f) e %.2f%% da PPP (%.2f)  %n", this, grade, percentage, passingScore, percentagePPP, passingScorePPP);
 	}
 	
 	public double gradeOnIt(Exam exam) {
@@ -83,6 +91,6 @@ public class Course {
 	}
 
 	public double getPasingScorePPP() {
-		return pasingScorePPP;
+		return passingScorePPP;
 	}
 }
